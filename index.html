@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
   <meta charset="UTF-8">
   <title>Laosvip888</title>
@@ -24,16 +24,17 @@
 
     #status {
       position: fixed;
-      top: 10px;
-      left: 10px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: 9999;
       color: white;
-      background: rgba(0,0,0,0.6);
-      padding: 8px 12px;
-      border-radius: 6px;
+      background: rgba(0,0,0,0.75);
+      padding: 12px 18px;
+      border-radius: 8px;
       font-family: Arial, sans-serif;
-      font-size: 14px;
-      display: none;
+      font-size: 16px;
+      text-align: center;
     }
   </style>
 </head>
@@ -41,26 +42,25 @@
 <body>
   <div id="status">กำลังโหลด...</div>
 
-  <iframe 
+  <iframe
     id="frame"
     src="https://hubcenter.store/la"
     allowfullscreen>
   </iframe>
 
   <script>
-    const urls = [
-      "https://hubcenter.store/la"
-    ];
-
-    const statusEl = document.getElementById("status");
     const frame = document.getElementById("frame");
+    const statusEl = document.getElementById("status");
 
-    function loadSite() {
+    frame.onload = function () {
       statusEl.style.display = "none";
-      frame.src = urls[0];
-    }
+    };
 
-    loadSite();
+    setTimeout(function () {
+      if (statusEl.style.display !== "none") {
+        statusEl.innerHTML = "โหลดไม่สำเร็จ หรือเว็บปลายทางไม่อนุญาตให้เปิดผ่าน iframe";
+      }
+    }, 6000);
   </script>
 </body>
 </html>
